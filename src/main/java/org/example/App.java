@@ -1,6 +1,9 @@
 package org.example;
 
 
+import org.example.factoryMethod.ITriangle;
+import org.example.factoryMethod.Triangle;
+import org.example.factoryMethod.TypeTriangle;
 import org.example.strategy.Administrative;
 import org.example.strategy.ICategory;
 import org.example.strategy.Context;
@@ -10,7 +13,7 @@ import org.example.strategy.Operator;
 
 public class App {
     public static void main(String[] args) {
-        Employee employee = new Employee("pepe", "Director", 2000.00);
+       /* Employee employee = new Employee("pepe", "Director", 2000.00);
         Employee employee1 = new Employee("pepe", "Operator", 2000.00);
         Employee employee2 = new Employee("pepe", "Administrative", 2000.00);
 
@@ -28,7 +31,17 @@ public class App {
 
         System.out.println(employee);
         System.out.println(employee1);
-        System.out.println(employee2);
+        System.out.println(employee2);*/
+
+        Triangle triangle = new TypeTriangle();
+
+        ITriangle t = triangle.getTriangle(12.00,12.00,12.00);
+        t.triangleType();
+        ITriangle t1 = triangle.getTriangle(10.00,12.00,10.00);
+        t1.triangleType();
+        ITriangle t2 = triangle.getTriangle(10.00,12.00,5.00);
+        t2.triangleType();
+
 
     }
 
