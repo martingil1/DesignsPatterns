@@ -1,6 +1,11 @@
 package org.example;
 
 
+import org.example.abstractFactory.Client;
+import org.example.abstractFactory.ITvAbstractFactory;
+import org.example.abstractFactory.LCDBlue;
+import org.example.abstractFactory.PlasmaYellow;
+import org.example.abstractFactory.Product;
 import org.example.factoryMethod.ITriangle;
 import org.example.factoryMethod.Triangle;
 import org.example.factoryMethod.TypeTriangle;
@@ -31,7 +36,7 @@ public class App {
 
         System.out.println(employee);
         System.out.println(employee1);
-        System.out.println(employee2);*/
+        System.out.println(employee2);
 
         Triangle triangle = new TypeTriangle();
 
@@ -40,9 +45,30 @@ public class App {
         ITriangle t1 = triangle.getTriangle(10.00,12.00,10.00);
         t1.triangleType();
         ITriangle t2 = triangle.getTriangle(10.00,12.00,5.00);
-        t2.triangleType();
+        t2.triangleType();*/
 
 
+
+        ITvAbstractFactory factory = getProduct("Plasma Yellow");
+        Product product = new Product(factory);
+        Client client = new Client(product, "Martin");
+        System.out.println(client.toString() + product.toString());
+
+        
+
+
+    }
+
+    public static ITvAbstractFactory getProduct(String productType)  {
+        
+        ITvAbstractFactory itaf = null;
+
+        if(productType.equals("LCD Blue")){
+            itaf = new LCDBlue();
+        } else if(productType.equals("Plasma Yellow")){
+            itaf = new PlasmaYellow();
+        } 
+        return itaf;
     }
 
     public static ICategory modifySalary(Employee e) {
